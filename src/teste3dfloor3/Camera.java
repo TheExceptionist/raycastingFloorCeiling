@@ -59,14 +59,14 @@ public class Camera {
     }
 
     public void translate(double dx, double dy) {
-        x += dx;
-        y += dy;
+        x += dx * 2;
+        y += dy * 2;
         updateFrustrum();
         updateCollider();
     }
     
     public void rotate(double dAngle) {
-        angle += dAngle;
+        angle += dAngle * 2;
         updateFrustrum();
     }
     
@@ -111,10 +111,12 @@ public class Camera {
         moved = false;
         
         if (Keyboard.keyDown[37]) { // left
-            strafe(map, -Time.delta * velocity);
+            //strafe(map, -Time.delta * velocity);
+            rotate(+Time.delta * 0.000000001);
         }
         else if (Keyboard.keyDown[39]) { // right
-            strafe(map, Time.delta * velocity);
+            //strafe(map, Time.delta * velocity);
+            rotate(-Time.delta * 0.000000001);
         }
 
         if (Keyboard.keyDown[38]) { // up 
@@ -126,12 +128,12 @@ public class Camera {
         
         updateHeight();
         
-        if (Keyboard.keyDown[90]) { // z
+       /* if (Keyboard.keyDown[90]) { // z
             rotate(+Time.delta * 0.000000001);
         }
         else if (Keyboard.keyDown[88]) { // x
             rotate(-Time.delta * 0.000000001);
-        }
+        }*/
         
     }
     
